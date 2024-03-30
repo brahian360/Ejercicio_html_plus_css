@@ -1,0 +1,298 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0; /* Ajusta el encabezado al lado derecho */
+    left: 200px; /* Ancho de la barra lateral */
+    width: calc(100% - 200px); /* Ancho máximo del encabezado para dejar espacio para la barra lateral */
+    max-width: calc(100% - 200px); /* Ajuste adicional para el ancho máximo */
+    height: 200px; /* Altura deseada del encabezado */
+    background-color: rgba(255, 255, 255, 0.0); /* Agrega un fondo semi-transparente */
+    z-index: 1; /* Asegura que el encabezado esté delante de todo */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga del encabezado */
+    transition: top 0.3s, background-color 0.3s; /* Agrega una transición suave */
+}
+
+header img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    object-fit: cover; /* Ajusta la imagen para cubrir todo el encabezado */
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    right: 0; /* Ajusta la barra de navegación superior al lado derecho */
+    width: calc(100% - 200px); /* Ancho máximo de la barra de navegación, dejando espacio para la barra lateral */
+    padding: 20px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.0);
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #666;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+h1 {
+    position: absolute; /* Posición absoluta */
+    top: 50%; /* Alineamos verticalmente en el centro */
+    left: 50%; /* Alineamos horizontalmente en el centro */
+    transform: translate(-50%, -50%); /* Centramos exactamente */
+    z-index: 0; /* Colocamos detrás de los enlaces */
+}
+
+main {
+    padding: 20px;
+    overflow-y: auto; /* Agrega scroll vertical cuando sea necesario */
+    margin-top: 200px; /* Ajusta el margen superior para dejar espacio para el encabezado */
+    margin-left: 200px; /* Ajusta el margen izquierdo para dejar espacio para la barra lateral */
+}
+
+section {
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+}
+
+.item {
+    position: relative;
+    overflow: hidden; /* Para ocultar el desbordamiento de las descripciones */
+}
+
+.item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.item img:hover {
+    transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay p {
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+    margin: 5px;
+
+}
+
+.itinerary {
+    list-style-type: none;
+    padding: 0;
+}
+
+.itinerary li {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.day {
+    font-weight: bold;
+}
+
+.activity {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.activity:hover .details {
+    display: block;
+}
+
+.details {
+    display: none;
+    margin-left: 20px;
+}
+
+/* Mostrar detalles al pasar el mouse */
+.itinerary li:hover .details {
+    display: block;
+}
+
+.costs {
+    max-height: 100px;
+}
+
+/* Estilos para la sección de costos */
+#costs .content {
+    max-height: 150px;
+    overflow-y: hidden; /* Oculta el contenido que exceda la altura máxima */
+    transition: max-height 0.3s ease; /* Agrega una transición suave */
+}
+
+#costs .content a {
+    display: inline-block;
+    margin-top: 10px; /* Espacio adicional entre el párrafo y el enlace */
+}
+
+
+#costs.expanded .content {
+    max-height: none; /* Muestra todo el contenido cuando se expande */
+}
+
+.expandable-section .content {
+    overflow: hidden;
+}
+
+.expandable-section.collapsed .content {
+    max-height: 100px; /* Altura máxima para mostrar solo uno o dos renglones */
+}
+
+.expandable-section.expanded .content {
+    max-height: none; /* Permitir que la sección se expanda completamente */
+}
+
+.expandable-section .toggle-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #f4f4f4;
+    border-right: 1px solid #ccc;
+    padding-top: 50px;
+    z-index: 100; /* Asegura que la barra lateral esté delante del contenido principal */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px 20px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px; /* Reducir el espacio interno del footer */
+    background-color: #333;
+    color: #fff;
+    z-index: 1000; /* Asegura que el pie de página esté delante de todo */
+    max-height: 60px; /* Establecer la altura máxima */
+    overflow: hidden; /* Ocultar cualquier contenido que exceda la altura máxima */
+}
+
+/* Estilos para las imágenes en movimiento */
+.image-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente las imágenes */
+    align-items: center; /* Centra verticalmente las imágenes */
+    height: 200px; /* Altura deseada de las imágenes */
+    overflow: hidden; /* Oculta cualquier parte de las imágenes que sobresalga del contenedor */
+}
+
+.image-container img {
+    width: auto;
+    height: 100%; /* Ajusta la altura de las imágenes al contenedor */
+    opacity: 0; /* Inicialmente oculta las imágenes */
+    animation: slideImages 20s infinite ease-in-out; /* Animación para desplazar las imágenes */
+}
+
+/* Animación para desplazar las imágenes */
+@keyframes slideImages {
+    0% {
+        opacity: 0;
+        transform: translateX(100%); /* Desplaza las imágenes hacia la derecha */
+    }
+    10% {
+        opacity: 1; /* Hace visible la primera imagen */
+        transform: translateX(0); /* Mantiene la primera imagen en su posición */
+    }
+    90% {
+        opacity: 1; /* Mantiene la primera imagen visible */
+        transform: translateX(-100%); /* Desplaza la primera imagen hacia la izquierda */
+    }
+    100% {
+        opacity: 0; /* Oculta la primera imagen */
+        transform: translateX(0); /* Mantiene la primera imagen en su posición */
+    }
+}
+
+/* Estilos para alinear la barra de navegación a la derecha */
+.navbar-right {
+    float: right;
+}
+
+/* Estilos para el contenedor del mapa */
+.map-container {
+    text-align: left; /* Centra el mapa horizontalmente */
+    margin-top: 20px; /* Espacio adicional hacia arriba */
+    margin-left: 20px; /* Espacio adicional hacia la iz */
+}
+
+.video-container {
+    margin-top: 20px; /* Espacio adicional hacia arriba */
+    text-align: right; /* Centra el mapa horizontalmente */
+    margin-left: 20px; /* Espacio adicional hacia la iz */
+}
